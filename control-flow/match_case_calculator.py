@@ -1,27 +1,33 @@
-print("Two numbers will be needed for this arithmetic calculation.")
-num_1 = int(input("Enter the first number: "))
-num_2 = int(input("Enter the second number: "))
+# Building a calculator with a match case statement
 
-operation = input(
-    "+ = Addition\n- = Subtraction\n* = Multiplication\n/ = Division\n"
-    "Enter the arithmetic operation you want to carry out: "
-).lower()
+print("Two numbers will be needed for this arithmetic calculation.") # prompting to be aware of what he/she is about doing
 
+# Prompt for user input
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+operation = input("Choose the operation (+, -, *, /): ").strip()
+
+# The match-case statements
 match operation:
     case "+":
-        addition = float(num_1 + num_2)
-        print(f"The result is {addition}")
+        result = num1 + num2
+        print(f"The result is {result}")
     case "-":
-        subtraction = float(num_1 - num_2)
-        print(f"The result is {subtraction}")
+        result = num1 - num2
+        print(f"The result is {result}")
     case "*":
-        multiplication = float(num_1 * num_2)
-        print(f"The result is {multiplication}")
+        result = num1 * num2
+        print(f"The result is {result}")
     case "/":
-        if num_2 != 0:
-            division = float(num_1 / num_2)
-            print(f"The result is {division}")
+        if num2 != 0:
+            result = num1 / num2
+            print(f"The result is {result}")
         else:
-            print("Error! Division by zero is not allowed.")
+            print("Cannot divide by zero.")
     case _:
         print("Invalid operation selected.")
+
+
+
+
+
