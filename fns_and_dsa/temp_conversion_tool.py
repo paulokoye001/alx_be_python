@@ -16,7 +16,7 @@ def main():
     try:
         # Get user input
         temp_value = float(input("Enter the temperature value: "))
-        unit = input("Is this in (C)elsius or (F)ahrenheit? ").strip().lower()
+        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().lower()
 
         # Perform conversion based on the unit
         if unit == 'c':
