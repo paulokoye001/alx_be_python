@@ -1,42 +1,73 @@
 
-# main-0.py
-
+import sys
 from bank_account import BankAccount
 
 def main():
-    """Handles user input for bank transactions dynamically from the command line."""
-    account = BankAccount(100.0)  # Example starting balance of $100
+    account = BankAccount(100)  # Example starting balance
+    
+    if len(sys.argv) < 2:
+        print("Usage: python main-0.py <command>:<amount>")
+        print("Commands: deposit, withdraw, display")
+        sys.exit(1)
 
-    while True:
-        print("\nOptions: deposit, withdraw, display, exit")
-        command = input("Enter command: ").strip().lower()
+    command, *params = sys.argv[1].split(':')
+    amount = float(params[0]) if params else None
 
-        if command == "deposit":
-            try:
-                amount = float(input("Enter deposit amount: "))
-                print(account.deposit(amount))
-            except ValueError:
-                print("Error: Please enter a valid numeric amount.")
-
-        elif command == "withdraw":
-            try:
-                amount = float(input("Enter withdrawal amount: "))
-                print(account.withdraw(amount))
-            except ValueError:
-                print("Error: Please enter a valid numeric amount.")
-
-        elif command == "display":
-            print(account.display_balance())
-
-        elif command == "exit":
-            print("Exiting program. Goodbye!")
-            break
-
+    if command == "deposit" and amount is not None:
+        account.deposit(amount)
+        print(f"Deposited: ${amount:.2f}")
+    elif command == "withdraw" and amount is not None:
+        result = account.withdraw(amount)
+        if result is not True:
+            print(result)  # Now correctly prints "Insufficient funds."
         else:
-            print("Error: Invalid command. Use 'deposit', 'withdraw', 'display', or 'exit'.")
+            print(f"Withdrew: ${amount:.2f}")
+    elif command == "display":
+        account.display_balance()
+    else:
+        print("Invalid command.")
 
 if __name__ == "__main__":
     main()
+
+
+
+# from bank_account import BankAccount
+
+# def main():
+#     """Handles user input for bank transactions dynamically from the command line."""
+#     account = BankAccount(100.0)  # Example starting balance of $100
+
+#     while True:
+#         print("\nOptions: deposit, withdraw, display, exit")
+#         command = input("Enter command: ").strip().lower()
+
+#         if command == "deposit":
+#             try:
+#                 amount = float(input("Enter deposit amount: "))
+#                 print(account.deposit(amount))
+#             except ValueError:
+#                 print("Error: Please enter a valid numeric amount.")
+
+#         elif command == "withdraw":
+#             try:
+#                 amount = float(input("Enter withdrawal amount: "))
+#                 print(account.withdraw(amount))
+#             except ValueError:
+#                 print("Error: Please enter a valid numeric amount.")
+
+#         elif command == "display":
+#             print(account.display_balance())
+
+#         elif command == "exit":
+#             print("Exiting program. Goodbye!")
+#             break
+
+#         else:
+#             print("Error: Invalid command. Use 'deposit', 'withdraw', 'display', or 'exit'.")
+
+# if __name__ == "__main__":
+#     main()
 
 
 
