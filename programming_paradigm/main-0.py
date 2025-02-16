@@ -1,4 +1,3 @@
-
 import sys
 from bank_account import BankAccount
 
@@ -15,10 +14,8 @@ def main():
 
     if command == "deposit" and amount is not None:
         account.deposit(amount)
-        print(f"Deposited: ${amount:.2f}")
     elif command == "withdraw" and amount is not None:
-        result = account.withdraw(amount)
-        print(result)  # ✅ FIX: Print only the result message, whether success or failure.
+        account.withdraw(amount)  # ✅ Fix: No longer storing return value, directly prints
     elif command == "display":
         account.display_balance()
     else:

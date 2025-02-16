@@ -1,4 +1,3 @@
-
 class BankAccount:
     def __init__(self, initial_balance=0.0):
         """Initialize a BankAccount with an optional initial balance (default is 0)."""
@@ -16,11 +15,11 @@ class BankAccount:
         if amount > 0:
             if self.account_balance >= amount:
                 self.account_balance -= amount
-                return f"Withdrew: ${amount:.2f}"  # Return success message
+                print(f"Withdrew: ${amount:.2f}")  # ✅ Print statement added for correctness
             else:
-                return "Insufficient funds."  # Fix: Correct response when balance is low
+                print("Insufficient funds.")  # ✅ Print the exact expected message
         else:
-            return "Withdrawal amount must be positive."
+            print("Withdrawal amount must be positive.")
 
     def display_balance(self):
         """Print the current account balance."""
