@@ -18,10 +18,7 @@ def main():
         print(f"Deposited: ${amount:.2f}")
     elif command == "withdraw" and amount is not None:
         result = account.withdraw(amount)
-        if result is not True:
-            print(result)  # Now correctly prints "Insufficient funds."
-        else:
-            print(f"Withdrew: ${amount:.2f}")
+        print(result)  # ✅ FIX: Print only the result message, whether success or failure.
     elif command == "display":
         account.display_balance()
     else:
