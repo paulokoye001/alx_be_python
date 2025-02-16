@@ -1,27 +1,66 @@
-# bank_account.py
+# # bank_account.py
+
+# class BankAccount:
+#     def __init__(self, initial_balance=0.0):
+#         """Initialize a BankAccount with an optional initial balance (default is 0)."""
+#         self.account_balance = float(initial_balance)
+
+#     def deposit(self, amount):
+#         """Deposit a specified amount into the account."""
+#         if amount > 0:
+#             self.account_balance += amount
+#             return f"Deposited: ${amount:.2f}"
+#         return "Error: Deposit amount must be positive."
+
+#     def withdraw(self, amount):
+#         """Withdraw a specified amount if sufficient funds are available."""
+#         if amount > 0:
+#             if self.account_balance >= amount:
+#                 self.account_balance -= amount
+#                 return f"Withdrew: ${amount:.2f}"
+#             else:
+#                 return "Insufficient funds."  # FIX: Removed extra 'Error:' prefix
+#         return "Error: Withdrawal amount must be positive."
+
+#     def display_balance(self):
+#         """Return the current account balance."""
+#         return f"Current Balance: ${self.account_balance:.2f}"
+
+
+
+
 
 class BankAccount:
     def __init__(self, initial_balance=0.0):
-        """Initialize a BankAccount with an optional initial balance (default is 0)."""
+        #Initialize a BankAccount with an optional initial balance (default is 0).
         self.account_balance = float(initial_balance)
 
     def deposit(self, amount):
-        """Deposit a specified amount into the account."""
+        #Deposit a specified amount into the account.
         if amount > 0:
             self.account_balance += amount
-            return f"Deposited: ${amount:.2f}"
-        return "Error: Deposit amount must be positive."
+        else:
+            print("Error: Deposit amount must be positive.")
 
     def withdraw(self, amount):
-        """Withdraw a specified amount if sufficient funds are available."""
+        #Withdraw a specified amount if sufficient funds are available.
         if amount > 0:
             if self.account_balance >= amount:
                 self.account_balance -= amount
-                return f"Withdrew: ${amount:.2f}"
+                return True
             else:
-                return "Insufficient funds."  # FIX: Removed extra 'Error:' prefix
-        return "Error: Withdrawal amount must be positive."
+                print("Error: Insufficient funds.")
+                return False
+        else:
+            print("Error: Withdrawal amount must be positive.")
+            return False
 
     def display_balance(self):
-        """Return the current account balance."""
-        return f"Current Balance: ${self.account_balance:.2f}"
+        #Print the current account balance.
+        print(f"Current Balance: ${self.account_balance:.2f}")
+
+
+
+
+
+
