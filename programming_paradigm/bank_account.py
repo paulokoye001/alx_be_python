@@ -1,29 +1,24 @@
 class BankAccount:
     def __init__(self, initial_balance=0.0):
-        """Initialize a BankAccount with an optional initial balance (default is 0)."""
-        self.account_balance = float(initial_balance)
+        """Initialize the account with an optional initial balance."""
+        self.__account_balance = initial_balance
 
     def deposit(self, amount):
-        """Deposit a specified amount into the account."""
+        """Add money to the account balance."""
         if amount > 0:
-            self.account_balance += amount
-        else:
-            print("Deposit amount must be positive.")
+            self.__account_balance += amount
 
     def withdraw(self, amount):
-        """Withdraw a specified amount if sufficient funds are available."""
-        if amount > 0:
-            if self.account_balance >= amount:
-                self.account_balance -= amount
-                print(f"Withdrew: ${amount:.2f}")  # ✅ Print statement added for correctness
-            else:
-                print("Insufficient funds.")  # ✅ Print the exact expected message
-        else:
-            print("Withdrawal amount must be positive.")
+        """Withdraw money if there are sufficient funds."""
+        if 0 < amount <= self.__account_balance:
+            self.__account_balance -= amount
+            return True
+        return False
 
     def display_balance(self):
         """Print the current account balance."""
-        print(f"Current Balance: ${self.account_balance:.2f}")
+        print(f"Current Balance: ${self.__account_balance:.2f}")
+
 
 
 
